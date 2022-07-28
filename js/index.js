@@ -1,14 +1,25 @@
 //Cotizador de precios y reserva de habitacion en hotel
-function cotizarReserva (){
-let pregida = parseFloat(prompt("¿Que dia llegas(AÑO/M/D)?"))
-let pregvuelta = parseFloat(prompt("¿Que dia te vas(AÑO/M/D)?"))
+//Evento que me llama esta funcion con un click
+//Variable que llama al form donde aplico la funcion
+let btncrearreserva = document.querySelector (`#btnForm`);
+//evento que crear la reserva para calcular los dias
+btncrearreserva.addEventListener ( `click`, (event) => {
+  let pregida = document.querySelector (`#check-in`).value
+let pregvuelta = document.querySelector (`#check-out`).value
 console.log (pregida);
 console.log (pregvuelta);
 let reservacreada = new nuevaReserva = pregida + pregvuelta;
-return reservacreada;
- };
+return reservacreada, pregida, pregvuelta;
+});
 
-
+// function cotizarReserva (event){
+// let pregida = parseFloat(prompt("¿Que dia llegas(AÑO/M/D)?"))
+// let pregvuelta = parseFloat(prompt("¿Que dia te vas(AÑO/M/D)?"))
+// console.log (pregida);
+// console.log (pregvuelta);
+// let reservacreada = new nuevaReserva = pregida + pregvuelta;
+// return reservacreada;
+//  }
 //Calculador de dias
 let fechaida = Date(pregida);
 let fechavuelta = Date(pregvuelta);
@@ -16,14 +27,16 @@ let fechavuelta = Date(pregvuelta);
 console.log(fechaida);
 console.log(fechavuelta);
 
-const milisegundos = 24 * 60 * 60 * 1000;
+const milisegundos = 86400000;
 console.log(milisegundos);
 
-let ida = Math.round(fechaida / milisegundos);
-let vuelta = Math.round(fechavuelta / milisegundos);
-let diferencia = Math.abs(ida - vuelta);
+let ida = Math.abs(fechaida / milisegundos);
+let vuelta = Math.abs(fechavuelta / milisegundos);
+let diferenciadias = Math.round(ida - vuelta);
 
-alert(diferencia);
+const cantidaddepersonas = document.querySelector (`#personas`).value;
+
+alert(`Los dias que te vas a quedar en el hotel son ${diferenciadias} y la cantidad de personas que se hospedan son ${cantidaddepersonas}`);
 
 //FUNCIONES PARA GUARDAR DATOS DE RESERVAS EN EL HOTEL
 //array donde se van a guardar los obj con las reservas.
@@ -43,8 +56,6 @@ class Reserva {
     this.tipodeHabitacion = tipodeHabitacion;
     this.fechaDeLlegada = fechaDeLlegada;
     this.fechaDeVuelta = fechadevuelta;
-
-
   }
 }
 
@@ -69,13 +80,19 @@ console.log (`La reserva fue hecha por ${nombre}, le fecha de llegada es ${fecha
 
 //Crear funcion y un metodo de filtrado para poder ver los dias disponibles que hay para rerservar.
   
-
+// let buscador = prompt ("Cual es el nombre del que reservo?");
+  let buscador = "Kevin";
+  
 //Crear funcion con metodo para buscar si su nombre cuenta con reservas
 const search = listaDeReservas.find (
-  (el)=> el == buscador
+  (el)=> el.nombre == buscador
 );
-  // let buscador = prompt ("Cual es el nombre del que reservo?");
-  let buscador = Kevin;
+console.log (search)
+  
+
+//eventos...
+
+
  
  
 
