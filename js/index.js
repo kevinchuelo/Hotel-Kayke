@@ -1,16 +1,18 @@
 //Cotizador de precios y reserva de habitacion en hotel
 //Evento que me llama esta funcion con un click
 //Variable que llama al form donde aplico la funcion
-let btncrearreserva = document.querySelector (`#btnForm`);
+let btncrearreserva = document.querySelector ("#btnForm");
+console.log(btncrearreserva)
 //evento que crear la reserva para calcular los dias
-btncrearreserva.addEventListener ( `click`, (event) => {
-  let pregida = document.querySelector (`#check-in`).value
-let pregvuelta = document.querySelector (`#check-out`).value
+btncrearreserva.addEventListener ( 'click', () => {
+  let pregida = document.querySelector ('#check-in').value
+let pregvuelta = document.querySelector ('#check-out').value
+const cantidaddepersonas = document.querySelector ("#personas").value;
+console.log (cantidaddepersonas);
 console.log (pregida);
 console.log (pregvuelta);
-let reservacreada = new nuevaReserva = pregida + pregvuelta;
-return reservacreada, pregida, pregvuelta;
 });
+
 
 // function cotizarReserva (event){
 // let pregida = parseFloat(prompt("¿Que dia llegas(AÑO/M/D)?"))
@@ -33,9 +35,6 @@ console.log(milisegundos);
 let ida = Math.abs(fechaida / milisegundos);
 let vuelta = Math.abs(fechavuelta / milisegundos);
 let diferenciadias = Math.round(ida - vuelta);
-
-const cantidaddepersonas = document.querySelector (`#personas`).value;
-
 alert(`Los dias que te vas a quedar en el hotel son ${diferenciadias} y la cantidad de personas que se hospedan son ${cantidaddepersonas}`);
 
 //FUNCIONES PARA GUARDAR DATOS DE RESERVAS EN EL HOTEL
