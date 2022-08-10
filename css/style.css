@@ -1,6 +1,10 @@
 .carrusel {
-  width: 900px;
+  width: 100vw;
   height: auto;
+}
+
+.formulario {
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
