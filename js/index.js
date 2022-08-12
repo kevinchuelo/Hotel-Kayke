@@ -7,6 +7,9 @@ let dataTime = luxon.DateTime;
 //Variable que llama al form donde aplico la funcion
 let btncrearreserva = document.querySelector ("#btnForm");
 //evento que crear la reserva para calcular los dias
+let cajaNombre = document.querySelector ("#cajaNombre").value
+let cajaApellido = document.querySelector ("#cajaApellido").value
+let cajaDeHabitacion = document.querySelector ("#cajaDeHabitacion").value
 btncrearreserva.addEventListener ( 'click', () => {
 let pregida = document.querySelector ("#check-in").value
 let pregvuelta = document.querySelector ("#check-out").value
@@ -27,7 +30,8 @@ Toastify (
   duration:5000 ,
   position: "center",
   style:{background: "#84b6f4",},
-}).showToast();});
+}).showToast();
+return diferenciadias, cantidaddepersonas});
 //FUNCIONES PARA GUARDAR DATOS DE RESERVAS EN EL HOTEL
 //array donde se van a guardar los obj con las reservas.
 let listaDeReservas = [
@@ -47,19 +51,19 @@ class Reserva {
   }
 }
 
-const crearReserva = () => {
-  let nombre = cajanombre;
-  let apellido = cajaapellido;
+function crearReserva (){
+  let nombre = cajaNombre;
+  let apellido = cajaApellido;
   let personas = cantidaddepersonas;
-  let tipodeHabitacion = cajahabitacion;
+  let tipodeHabitacion = cajaDeHabitacion;
   let fechaDeLlegada = pregida;
   let fechaDeVuelta = pregvuelta;
 
   let nuevaReserva = new Reserva(nombre, apellido, personas, tipodeHabitacion, fechaDeLlegada, fechaDeVuelta)
-  listaDeReservas.push(nuevaReserva);
-  return nuevaReserva;
+  listaDeReservas.push(nuevaReserva); 
+ return nuevaReserva;
 };
-
+ localStorage.setItem ("reservas", JSON.stringify(listaDeReservas))
 //Boton para ver la lista de reservas hechas hecho com metodo de busqueda foreach
 // listaDeReservas.forEach (function verReservas (nombre, fechaDeLlegada, fechaDeVuelta) {
 // Toastify({ text:`La reserva fue hecha por ${nombre}, le fecha de llegada es ${fechaDeLlegada} y su fecha de vuelta es ${fechaDeVuelta}.`,
